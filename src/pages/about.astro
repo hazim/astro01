@@ -13,6 +13,8 @@ const skills = ["HTML", "CSS", "JavaScript", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "pink";
 ---
 
 <html lang="en">
@@ -28,7 +30,8 @@ const goal = 3;
                 font-size: 4rem;
             }
             .skill {
-                color: green;
+                /* color: green; */
+                color: var(--skillColor);
                 font-weight: bold;
             }
         </style>
