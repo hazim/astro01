@@ -3,11 +3,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
-import CookieConsent from "../components/CookieConsent.astro";
-const GA_TRACKING_ID = "G-1CM3Q5P5SS";
-const isProd = import.meta.env.MODE === "production";
-const consentGiven = Astro.cookies.get("cookie_consent") === "true";
-
 const { pageTitle } = Astro.props;
 ---
 
@@ -18,25 +13,10 @@ const { pageTitle } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
-
-        {isProd && consentGiven && (
-            <>
-              <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
-              <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '{GA_TRACKING_ID}', { anonymize_ip: true, allow_google_signals: false });
-              </script>
-            </>
-          )}
-
     </head>
     <body>
         <Header />
         <h1>{pageTitle}</h1>
-
-        <CookieConsent />
 
         <slot />
         <Footer />
