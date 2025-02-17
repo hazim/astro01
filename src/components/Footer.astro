@@ -4,14 +4,13 @@
 import Social from "./Social.astro";
 ---
 
-<style>
+<!-- <style>
     footer {
         display: flex;
         gap: 1rem;
         margin-top: 2rem;
     }
-</style>
-
+</style> -->
 <footer>
     <!-- <p>
         Learn more about my projects on <a
@@ -25,4 +24,11 @@ import Social from "./Social.astro";
         platform="youtube"
         username="astrodotbuild"
     />
+    <p class="footer-text">
+        &copy; <span id="year"></span> Hazim Sami. All rights reserved. Powered by
+        the wonderful <a href="https://astro.build/">Astro</a> JS framework.
+    </p>
+    <script>
+        import "../scripts/year.js";
+    </script>
 </footer>

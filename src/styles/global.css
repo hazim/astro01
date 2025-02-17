@@ -81,3 +81,14 @@ hamburger {
         display: none;
     }
 }
+
+footer {
+    border-top: dotted 2px grey;
+    padding-top: 20px;
+    margin-top: 50px;
+
+}
+
+.footer-text {
+    font-size: 0.8rem;
+}
