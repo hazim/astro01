@@ -1,8 +1,6 @@
 ---
-const GA_TRACKING_ID = "G-1CM3Q5P5SS"; // Replace with your GA ID
+const GA_TRACKING_ID = "G-1CM3Q5P5SS"; // Replace with your actual GA ID
 const isProd = import.meta.env.MODE === "production";
-
-// Check if the user has previously given consent
 const consentGiven = Astro.cookies.get("cookie_consent") === "true";
 const consentDenied = Astro.cookies.get("cookie_consent") === "false";
 const showBanner = !consentGiven && !consentDenied;
@@ -19,14 +17,27 @@ const showBanner = !consentGiven && !consentDenied;
 }
 
 <script>
-    document.getElementById("accept-cookies")?.addEventListener("click", () => {
-        document.cookie = "cookie_consent=true; path=/; max-age=31536000"; // 1 year
-        location.reload(); // Reload to apply tracking
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.getElementById("cookie-banner");
+        const acceptButton = document.getElementById("accept-cookies");
+        const rejectButton = document.getElementById("reject-cookies");
 
-    document.getElementById("reject-cookies")?.addEventListener("click", () => {
-        document.cookie = "cookie_consent=false; path=/; max-age=31536000"; // 1 year
-        document.getElementById("cookie-banner").style.display = "none"; // Hide banner
+        if (acceptButton) {
+            acceptButton.addEventListener("click", function () {
+                document.cookie =
+                    "cookie_consent=true; path=/; max-age=31536000"; // Store consent for 1 year
+                banner.style.display = "none"; // Hide banner immediately
+                location.reload(); // Reload to apply tracking
+            });
+        }
+
+        if (rejectButton) {
+            rejectButton.addEventListener("click", function () {
+                document.cookie =
+                    "cookie_consent=false; path=/; max-age=31536000"; // Store rejection for 1 year
+                banner.style.display = "none"; // Hide banner immediately
+            });
+        }
     });
 </script>
 
