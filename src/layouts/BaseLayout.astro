@@ -13,6 +13,27 @@ const { pageTitle } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
+
+        <!-- 🔹 Iubenda Cookie Consent Script -->
+        <script type="text/javascript">
+            var _iub = _iub || [];
+            _iub.csConfiguration = {
+                siteId: 3933071,
+                cookiePolicyId: 38493909,
+                lang: "en",
+                storage: { useSiteId: true },
+            };
+        </script>
+        <script
+            type="text/javascript"
+            src="https://cs.iubenda.com/autoblocking/3933071.js"></script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="//cdn.iubenda.com/cs/iubenda_cs.js"
+            charset="UTF-8"
+            async></script>
     </head>
     <body>
         <Header />
