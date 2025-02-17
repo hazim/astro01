@@ -1,34 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
 const pageTitle = "Hi there! 👋";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>Building with Astro</h2>
+	<!-- <Greeting messages={["Hi", "Hello", "Hey there"]} /> -->
+	<Greeting
+		client:load
+		messages={["Hej", "Hallo", "Hola", "Habari", "Merhaba"]}
+	/>
+	<h3>Welcome to FrontEndFlux, a Frontend Developer’s Learning Journey</h3>
 	<p>
-		As I delve into the world of frontend coding to complement my graphic
-		design skills, this website serves as my dynamic playground, evolving
-		alongside my learning journey. Expect continuous changes and
-		enhancements as I find my footing in the world of web development.
+		Hey there! I’m FrontEndFlux, a self-taught frontend developer
+		documenting my journey as I learn, build, and experiment with web
+		technologies. This blog is my open notebook—where I share what I’ve
+		learned, the challenges I’ve faced, and the little wins along the way.
+		If you’re also on a path to becoming a frontend developer, I hope you
+		find these posts helpful, relatable, or at least a bit entertaining.
 	</p>
 
 	<p>
-		In due course, I'll be introducing a blog section—a space where I share
-		insights gained along the way. Some posts will be personal notes,
-		serving as valuable references for me in the future, and hopefully,
-		offering a helping hand to others venturing into the same territory.
+		I believe in learning in public—sharing my thoughts, projects, and
+		mistakes so that others can learn from them too. Whether it’s
+		understanding JavaScript concepts, experimenting with CSS animations, or
+		diving into frameworks like Astro, I’ll be posting my insights, code
+		snippets, and reflections. Expect hands-on tutorials, project
+		breakdowns, and personal thoughts on the learning process.
 	</p>
 
-	<!-- <p>
-		Feel free to connect with me on X (formerly Twitter) or drop me an
-		email; I always appreciate engaging conversations. For those who enjoy a
-		more social touch, take a peek at my musical preferences on Last.FM. It
-		might just be the perfect conversation starter—we can dive into the
-		world of music.
-	</p> -->
-
-	<!-- <p>
-		In the pipeline, there's an exciting project brewing: a mixtape site set
-		to launch before my portfolio site.
-	</p> -->
+	<p>
+		This space isn’t just for me—it’s for anyone interested in frontend
+		development, whether you’re a beginner like me or a seasoned developer
+		willing to share advice. Feel free to connect with me on [Bluesky
+		Username] and join the conversation. Let’s build, learn, and grow
+		together! 🚀
+	</p>
 </BaseLayout>
