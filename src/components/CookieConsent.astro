@@ -1,0 +1,58 @@
+---
+const GA_TRACKING_ID = "G-1CM3Q5P5SS"; // Replace with your GA ID
+const isProd = import.meta.env.MODE === "production";
+
+// Check if the user has previously given consent
+const consentGiven = Astro.cookies.get("cookie_consent") === "true";
+const consentDenied = Astro.cookies.get("cookie_consent") === "false";
+const showBanner = !consentGiven && !consentDenied;
+---
+
+{
+    isProd && showBanner && (
+        <div id="cookie-banner" class="cookie-banner">
+            <p>This site uses cookies to analyze traffic. Do you accept?</p>
+            <button id="accept-cookies">Yes</button>
+            <button id="reject-cookies">No</button>
+        </div>
+    )
+}
+
+<script>
+    document.getElementById("accept-cookies")?.addEventListener("click", () => {
+        document.cookie = "cookie_consent=true; path=/; max-age=31536000"; // 1 year
+        location.reload(); // Reload to apply tracking
+    });
+
+    document.getElementById("reject-cookies")?.addEventListener("click", () => {
+        document.cookie = "cookie_consent=false; path=/; max-age=31536000"; // 1 year
+        document.getElementById("cookie-banner").style.display = "none"; // Hide banner
+    });
+</script>
+
+<style>
+    .cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .cookie-banner button {
+        margin: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+    }
+    .cookie-banner button:hover {
+        background: #45a049;
+    }
+</style>
